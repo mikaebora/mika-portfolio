@@ -11,6 +11,7 @@ export interface Project {
   gradient: string;
   tools: string[];
   href: string;
+  video?: string;
 }
 
 export interface Service {
