@@ -10,7 +10,7 @@ export const projects: Project[] = [
     gradient: "from-violet-600/40 via-purple-900/30 to-background",
     tools: ["Premiere Pro", "CapCut", "Photoshop"],
     href: "#contact",
-    video: "/videos/edit1.mp4",
+    video: "https://youtube.com/shorts/9JtW3Q-cJZY?feature=share",
   },
   {
     id: "2",

@@ -20,6 +20,16 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return () => setMounted(false);
   }, []);
 
+  const getYoutubeId = (url?: string) => {
+    if (!url) return null;
+    const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|shorts\/)([^#\&\?]*).*/;
+    const match = url.match(regExp);
+    return (match && match[2].length === 11) ? match[2] : null;
+  };
+
+  const youtubeId = getYoutubeId(project.video);
+  const showInlineVideo = !!project.video && !youtubeId;
+
   return (
     <motion.article
       className="group relative"
@@ -45,7 +55,7 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
           onClick={() => project.video && setIsPlayerOpen(true)}
           transition={{ type: "spring", stiffness: 220, damping: 24 }}
         >
-          {project.video ? (
+          {showInlineVideo ? (
             <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-black">
               <video
                 src={project.video}
@@ -153,12 +163,21 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
             className="glass-panel liquid-border relative max-h-[85vh] max-w-[90vw] w-[400px] aspect-[9/16] overflow-hidden rounded-3xl bg-black/40 backdrop-blur-xl border border-white/10 shadow-2xl shadow-cyan/15"
             onClick={(e) => e.stopPropagation()}
           >
-            <video
-              src={project.video}
-              controls
-              autoPlay
-              className="h-full w-full object-contain bg-black"
-            />
+            {youtubeId ? (
+              <iframe
+                src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&rel=0`}
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full border-0 rounded-2xl bg-black"
+              />
+            ) : (
+              <video
+                src={project.video}
+                controls
+                autoPlay
+                className="h-full w-full object-contain bg-black"
+              />
+            )}
           </motion.div>
         </motion.div>,
         document.body
