@@ -24,26 +24,31 @@ const software = [
   {
     name: "Adobe Premiere Pro",
     mark: "Pr",
+    icon: "/icons/premiere.svg",
     className: "border-[#9999ff]/35 bg-[#00005b] text-[#9999ff]",
   },
   {
     name: "CapCut",
     mark: "Cc",
+    icon: "/icons/capcut.svg",
     className: "border-white/25 bg-white text-black",
   },
   {
     name: "Photoshop",
     mark: "Ps",
+    icon: "/icons/photoshop.svg",
     className: "border-[#31a8ff]/35 bg-[#001e36] text-[#31a8ff]",
   },
   {
     name: "Figma",
     mark: "Fg",
+    icon: "/icons/figma.svg",
     className: "border-[#f24e1e]/35 bg-[#1b1b1f] text-[#ff7262]",
   },
   {
     name: "DaVinci Resolve",
     mark: "Dr",
+    icon: "/icons/davinci.svg",
     className: "border-[#55d7ff]/35 bg-[#081018] text-[#55d7ff]",
   },
 ];
@@ -150,7 +155,15 @@ export default function About() {
                 <span
                   className={`grid h-10 w-10 place-items-center rounded-xl border text-sm font-bold tracking-tight sm:h-11 sm:w-11 ${item.className}`}
                 >
-                  {item.mark}
+                  {item.icon ? (
+                    <img
+                      src={item.icon}
+                      alt={`${item.name} logo`}
+                      className="h-[60%] w-[60%] object-contain"
+                    />
+                  ) : (
+                    item.mark
+                  )}
                 </span>
                 <span className="whitespace-nowrap text-sm font-medium text-white/85 sm:text-base">
                   {item.name}

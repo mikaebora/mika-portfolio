@@ -7,7 +7,7 @@ export default function Footer() {
         <p className="text-sm text-muted">
           © {currentYear} Mika Ebora. All rights reserved.
         </p>
-        <p className="text-sm text-muted">Video Editor & Content Creator</p>
+        <p className="text-sm text-muted">Video Editor</p>
       </div>
     </footer>
   );
