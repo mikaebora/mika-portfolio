@@ -7,7 +7,7 @@ import SectionHeading from "@/components/ui/SectionHeading";
 import ProjectCard from "@/components/ui/ProjectCard";
 import { projects } from "@/lib/projects";
 
-const PROJECTS_PER_BATCH = 3;
+const PROJECTS_PER_BATCH = 8;
 
 export default function FeaturedWorks() {
   const [visibleCount, setVisibleCount] = useState(PROJECTS_PER_BATCH);
@@ -28,7 +28,7 @@ export default function FeaturedWorks() {
         description="A showcase of recent edits spanning short-form social content, motion graphics, and brand storytelling."
       />
 
-      <div className="grid gap-16 md:gap-20 lg:gap-24">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto justify-center">
         {visibleProjects.map((project, index) => (
           <ProjectCard key={project.id} project={project} index={index} />
         ))}

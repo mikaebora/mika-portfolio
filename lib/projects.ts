@@ -6,7 +6,7 @@ export const projects: Project[] = [
     title: "Viral TikTok Campaign",
     description:
       "Fast-paced edits with trending transitions and sound design for a lifestyle brand.",
-    category: "TikTok",
+    category: "Reels",
     gradient: "from-violet-600/40 via-purple-900/30 to-background",
     tools: ["Premiere Pro", "CapCut", "Photoshop"],
     href: "#contact",
@@ -17,10 +17,11 @@ export const projects: Project[] = [
     title: "Instagram Reels Series",
     description:
       "A cohesive 12-part Reels series with motion graphics and branded overlays.",
-    category: "Reels",
+    category: "UGC",
     gradient: "from-rose-600/40 via-pink-900/30 to-background",
     tools: ["Premiere Pro", "Figma", "Photoshop"],
     href: "#contact",
+    video: "https://youtube.com/shorts/sFNchc4ZLWk?feature=share",
   },
   {
     id: "3",
@@ -31,6 +32,7 @@ export const projects: Project[] = [
     gradient: "from-amber-600/40 via-orange-900/30 to-background",
     tools: ["CapCut", "Premiere Pro", "DaVinci Resolve"],
     href: "#contact",
+    video: "https://youtube.com/shorts/UQURdFuABS4?feature=share",
   },
   {
     id: "4",
