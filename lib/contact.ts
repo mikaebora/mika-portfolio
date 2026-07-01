@@ -12,22 +12,22 @@ export const contactLinks: ContactLink[] = [
   {
     id: "1",
     label: "Email",
-    value: "mikaebora@email.com",
-    href: "mailto:mikaebora@email.com",
+    value: "mikaellapebora@email.com",
+    href: "mailto:mikaellapebora@email.com",
     icon: "email",
   },
   {
     id: "2",
     label: "Facebook",
-    value: "Mika Ebora",
+    value: "Mikaella Ebora",
     href: "https://facebook.com",
     icon: "facebook",
   },
   {
     id: "3",
     label: "LinkedIn",
-    value: "Mika Ebora",
-    href: "https://linkedin.com",
+    value: "Mikaella Ebora",
+    href: "https://www.linkedin.com/in/ma-mikaella-ebora-83449b32a/",
     icon: "linkedin",
   },
 ];
