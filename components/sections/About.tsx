@@ -91,9 +91,13 @@ export default function About() {
 
 
               <p className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">
-                As a video editor with hands-on experience, I combine creative storytelling
-                to create engaging content across digital platforms. I focus on pacing, visual flow,
-                and audience retention to help brands and creators stand out.
+                As a video editor with hands-on experience, I combine creative storytelling to create engaging
+                content across digital platforms. I focus on{" "}
+                <span className="font-semibold text-cyan">pacing</span>,{" "}
+                <span className="font-semibold text-cyan">visual flow</span>,{" "}
+                <span className="font-semibold text-cyan">audience retention</span>, and{" "}
+                <span className="font-semibold text-cyan">color grading</span>{" "}
+                to create cinematic looks with a premium feel, helping brands and creators stand out.
               </p>
             </motion.div>
 
