@@ -74,7 +74,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
           Creating engaging video content for creators, brands, and
-          businesses across today's leading social media platforms.
+          businesses across today&apos;s leading social media platforms.
         </motion.p>
 
         <motion.div

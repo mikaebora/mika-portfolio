@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 
@@ -68,9 +69,11 @@ export default function About() {
                 whileHover={{ scale: 1.04 }}
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
               >
-                <img
+                <Image
                   src="/profile.jfif"
                   alt="Mika Ebora"
+                  width={200}
+                  height={200}
                   className="h-full w-full object-cover object-[center_15%]"
                 />
               </motion.div>
@@ -152,9 +155,11 @@ export default function About() {
                       className={`grid h-8 w-8 place-items-center rounded-lg border text-xs font-bold tracking-tight sm:h-9 sm:w-9 ${item.className}`}
                     >
                       {item.icon ? (
-                        <img
+                        <Image
                           src={item.icon}
                           alt={`${item.name} logo`}
+                          width={24}
+                          height={24}
                           className="h-[60%] w-[60%] object-contain"
                         />
                       ) : (
