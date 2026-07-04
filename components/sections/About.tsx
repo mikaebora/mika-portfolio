@@ -44,7 +44,7 @@ const software = [
 ];
 
 export default function About() {
-  const marqueeItems = [...software, ...software];
+  const marqueeItems = software;
 
   return (
     <section
@@ -144,7 +144,7 @@ export default function About() {
             {/* Full-bleed marquee strip */}
             <div className="group relative -mx-6 overflow-hidden md:-mx-10 lg:-mx-14">
 
-              <div className="flex w-max animate-[software-marquee_28s_linear_infinite] gap-3 px-6 group-hover:[animation-play-state:paused] sm:gap-4 sm:px-10">
+              <div className="flex flex-wrap justify-center gap-3 px-6 sm:gap-4 sm:px-10">
                 {marqueeItems.map((item, index) => (
                   <div
                     key={`${item.name}-${index}`}
