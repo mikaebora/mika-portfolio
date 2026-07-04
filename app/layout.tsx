@@ -11,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Mikaella Ebora",
+  title: "Mikaella | Video Editor",
   description:
     "Portfolio of Mikaella Ebora",
   keywords: [
