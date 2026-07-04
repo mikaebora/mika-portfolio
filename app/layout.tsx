@@ -13,7 +13,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "Mikaella Ebora",
   description:
-    "Portfolio of Mikaella Ebora — freelance video editor specializing in TikTok, Reels, and YouTube Shorts.",
+    "Portfolio of Mikaella Ebora",
   keywords: [
     "video editor",
     "content creator",
@@ -21,12 +21,13 @@ export const metadata: Metadata = {
     "Reels editor",
     "YouTube Shorts",
     "Mika Ebora",
+    "Freelance",
   ],
   authors: [{ name: "Mika Ebora" }],
   openGraph: {
     title: "Mika Ebora | Video Editor",
     description:
-      "Crafting scroll-stopping short-form content for TikTok, Reels, and YouTube Shorts.",
+      "Creating engaging video content for creators, brands, and businesses across today's leading social media platforms.",
     type: "website",
   },
 };
@@ -37,7 +38,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={inter.variable} suppressHydrationWarning>
       <body className="min-h-screen font-sans">
         <Header />
         <main>{children}</main>

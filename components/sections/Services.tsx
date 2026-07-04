@@ -12,7 +12,7 @@ export default function Services() {
       <SectionHeading
         label="Services"
         title="What I offer"
-        description="From quick-turn social edits to full production support, I help creators and brands make an impact."
+        description="From fast-paced social edits to full production support, I help creators and brands make an impact."
       />
 
       <div className="grid gap-6 sm:grid-cols-2 lg:gap-8">

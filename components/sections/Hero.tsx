@@ -53,7 +53,9 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
         >
-          Mika Ebora
+          <span className="bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent">
+            Mika Ebora
+          </span>
         </motion.h1>
 
         <motion.p
@@ -71,9 +73,8 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          Crafting scroll-stopping short-form content that captures attention,
-          tells stories, and drives engagement across TikTok, Reels, and YouTube
-          Shorts.
+          Creating engaging video content for creators, brands, and
+          businesses across today's leading social media platforms.
         </motion.p>
 
         <motion.div

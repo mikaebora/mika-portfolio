@@ -1,23 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Section from "@/components/ui/Section";
-import SectionHeading from "@/components/ui/SectionHeading";
 import { fadeInUp } from "@/lib/animations";
 
 const highlights = [
-  {
-    label: "Education",
-    value: "Computer Science student at Batangas State University",
-  },
-  {
-    label: "Role",
-    value: "Freelance video editor for brands and creators",
-  },
-  {
-    label: "Focus",
-    value: "TikTok, Reels, and YouTube Shorts",
-  },
+  { label: "Education", value: "Computer Science · Batangas State University" },
+  { label: "Role", value: "Video Editor for Brands & Creators" },
+
 ];
 
 const software = [
@@ -57,144 +46,140 @@ export default function About() {
   const marqueeItems = [...software, ...software];
 
   return (
-    <Section
+    <section
       id="about"
-      className="border-t border-white/10 py-12 md:py-14 lg:py-16"
+      className="relative scroll-mt-24 overflow-hidden border-t border-white/10"
     >
-      <div className="grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16">
-        <motion.div
-          className="max-w-xl"
-          {...fadeInUp}
-          transition={{ ...fadeInUp.transition, delay: 0.05 }}
-        >
-          <motion.div
-            className="mb-8 h-[150px] w-[150px] overflow-hidden rounded-full border border-cyan/20 bg-white/[0.045] shadow-2xl shadow-cyan/10 backdrop-blur-xl transition-all duration-500 hover:-translate-y-1 hover:border-cyan/50 hover:shadow-cyan/20"
-            whileHover={{ scale: 1.03 }}
-            transition={{ type: "spring", stiffness: 260, damping: 22 }}
-          >
-            <img
-              src="/profile.jfif"
-              alt="Profile"
-              className="h-full w-full object-cover"
-            />
-          </motion.div>
+      {/* ── Content ─────────────────────────────────────────────────── */}
+      <div className="px-6 py-20 md:px-10 md:py-28 lg:px-14">
+        <div className="relative mx-auto max-w-6xl">
 
-          <SectionHeading
-            label="About"
-            title="Crafting polished stories with precision and rhythm"
-            description="Freelance video editor and Computer Science student focused on clean pacing, visual flow, and engaging short-form content."
-          />
+          {/* Headline + stat column */}
+          <div className="grid gap-10 lg:grid-cols-[1fr_auto] lg:gap-20">
 
-          <p className="max-w-2xl text-base leading-relaxed text-muted md:text-lg">
-            As a Computer Science student and freelance video editor, I combine
-            technical precision with creative storytelling to create engaging
-            content for TikTok, Reels, and YouTube Shorts. I focus on pacing,
-            visual flow, and audience retention to help brands and creators
-            stand out.
-          </p>
-        </motion.div>
-
-        <div className="flex flex-col gap-6">
-          {highlights.map((item, index) => (
+            {/* Left: circle avatar + headline + body */}
             <motion.div
-              key={item.label}
-              className="glass-panel liquid-border neon-hover group relative overflow-hidden rounded-2xl p-6 transition-all duration-500 hover:-translate-y-1 hover:border-cyan/25 hover:bg-white/[0.065] md:p-8"
               {...fadeInUp}
-              transition={{
-                ...fadeInUp.transition,
-                delay: 0.15 + index * 0.08,
-              }}
+              transition={{ ...fadeInUp.transition, delay: 0.05 }}
             >
+              {/* Circle avatar */}
               <motion.div
-                className="absolute -right-20 -top-20 h-40 w-48 rounded-[42%] bg-cyan/10 blur-2xl"
-                initial={{ opacity: 0 }}
-                whileHover={{ opacity: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-              <div className="relative z-10">
-                <span className="text-xs font-medium uppercase tracking-[0.18em] text-muted">
-                  {item.label}
-                </span>
-                <p className="mt-2 text-base leading-relaxed text-white md:text-lg lg:text-xl">
-                  {item.value}
-                </p>
-              </div>
-              <motion.div
-                className="absolute bottom-0 left-0 h-px w-0 bg-gradient-to-r from-cyan/80 via-violet/60 to-transparent"
-                whileHover={{ width: "100%" }}
-                transition={{ duration: 0.2 }}
-              />
-            </motion.div>
-          ))}
-        </div>
-      </div>
-
-      <motion.div
-        id="tools"
-        className="mt-16 scroll-mt-28 border-t border-white/10 pt-10 md:mt-20 md:pt-12 lg:mt-24"
-        {...fadeInUp}
-        transition={{ ...fadeInUp.transition, delay: 0.3 }}
-      >
-        <div className="mb-7 flex flex-col gap-2 md:mb-8">
-          <h3 className="text-3xl font-bold tracking-tight text-white md:text-4xl">
-            Creative Tools
-          </h3>
-        </div>
-
-        <div className="group relative left-1/2 w-[calc(100vw-3rem)] max-w-[1400px] -translate-x-1/2 overflow-hidden md:w-[calc(100vw-4rem)] lg:w-[calc(100vw-6rem)]">
-          <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-10 bg-gradient-to-r from-[#071012]/55 to-transparent backdrop-blur-[1px] md:w-14" />
-          <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-10 bg-gradient-to-l from-[#071012]/55 to-transparent backdrop-blur-[1px] md:w-14" />
-
-          <div className="flex w-max animate-[software-marquee_28s_linear_infinite] gap-3 pr-3 group-hover:[animation-play-state:paused] sm:gap-4 sm:pr-4">
-            {marqueeItems.map((item, index) => (
-              <div
-                key={`${item.name}-${index}`}
-                className="flex h-16 min-w-max items-center gap-3 rounded-full border border-white/10 bg-white/[0.055] px-4 shadow-lg shadow-black/20 backdrop-blur-xl transition-all duration-500 hover:-translate-y-0.5 hover:border-cyan/30 hover:bg-white/[0.08] hover:shadow-cyan/10 sm:h-[72px] sm:px-5"
-                aria-hidden={index >= software.length}
+                className="mb-8 h-[200px] w-[200px] overflow-hidden rounded-full border border-cyan/20 bg-white/[0.045] shadow-2xl shadow-cyan/10 backdrop-blur-xl"
+                whileHover={{ scale: 1.04 }}
+                transition={{ type: "spring", stiffness: 260, damping: 22 }}
               >
-                <span
-                  className={`grid h-10 w-10 place-items-center rounded-xl border text-sm font-bold tracking-tight sm:h-11 sm:w-11 ${item.className}`}
+                <img
+                  src="/profile.jfif"
+                  alt="Mika Ebora"
+                  className="h-full w-full object-cover object-[center_15%]"
+                />
+              </motion.div>
+
+              <span className="inline-block text-xs font-medium uppercase tracking-[0.2em] text-muted">
+                About
+              </span>
+
+
+              <h2 className="mt-1 max-w-2xl text-3xl font-bold leading-[1.08] tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                Let’s make your videos{" "}
+                {/*  <br className="hidden sm:block" />
+                with{" "} */}
+                <span className="bg-gradient-to-r from-cyan to-violet bg-clip-text text-transparent">
+                  stand out.
+                </span>
+              </h2>
+
+
+              <p className="mt-7 max-w-xl text-base leading-relaxed text-muted md:text-lg">
+                As a video editor with hands-on experience, I combine creative storytelling
+                to create engaging content across digital platforms. I focus on pacing, visual flow,
+                and audience retention to help brands and creators stand out.
+              </p>
+            </motion.div>
+
+            {/* Right: inline stat rows */}
+            <motion.div
+              className="flex flex-col justify-center lg:min-w-[300px]"
+              {...fadeInUp}
+              transition={{ ...fadeInUp.transition, delay: 0.2 }}
+            >
+              {highlights.map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  className="group border-t border-white/[0.08] py-5 first:border-t-0"
+                  initial={{ opacity: 0, x: 24 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: 0.25 + i * 0.07, ease: "easeOut" }}
                 >
-                  {item.icon ? (
-                    <img
-                      src={item.icon}
-                      alt={`${item.name} logo`}
-                      className="h-[60%] w-[60%] object-contain"
-                    />
-                  ) : (
-                    item.mark
-                  )}
-                </span>
-                <span className="whitespace-nowrap text-sm font-medium text-white/85 sm:text-base">
-                  {item.name}
-                </span>
-              </div>
-            ))}
+                  <span className="text-[10px] font-semibold uppercase tracking-[0.22em] text-muted/50">
+                    {item.label}
+                  </span>
+                  <p className="mt-1.5 text-sm font-medium leading-snug text-white/85 transition-colors duration-300 group-hover:text-cyan md:text-base">
+                    {item.value}
+                  </p>
+                </motion.div>
+              ))}
+            </motion.div>
           </div>
-        </div>
-      </motion.div>
+
+          {/* ── Tools marquee ─────────────────────────────────────────── */}
+          <motion.div
+            id="tools"
+            className="mt-8 scroll-mt-28 border-t border-white/10 pt-6 md:mt-10 md:pt-8"
+            {...fadeInUp}
+            transition={{ ...fadeInUp.transition, delay: 0.35 }}
+          >
+            <h3 className="mb-7 text-2xl font-bold tracking-tight text-white md:text-3xl">
+              Creative Tools
+            </h3>
+
+            {/* Full-bleed marquee strip */}
+            <div className="group relative -mx-6 overflow-hidden md:-mx-10 lg:-mx-14">
+
+              <div className="flex w-max animate-[software-marquee_28s_linear_infinite] gap-3 px-6 group-hover:[animation-play-state:paused] sm:gap-4 sm:px-10">
+                {marqueeItems.map((item, index) => (
+                  <div
+                    key={`${item.name}-${index}`}
+                    className="flex h-14 min-w-max items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-cyan/30 hover:bg-white/[0.07] sm:h-16 sm:px-5"
+                    aria-hidden={index >= software.length}
+                  >
+                    <span
+                      className={`grid h-8 w-8 place-items-center rounded-lg border text-xs font-bold tracking-tight sm:h-9 sm:w-9 ${item.className}`}
+                    >
+                      {item.icon ? (
+                        <img
+                          src={item.icon}
+                          alt={`${item.name} logo`}
+                          className="h-[60%] w-[60%] object-contain"
+                        />
+                      ) : (
+                        item.mark
+                      )}
+                    </span>
+                    <span className="whitespace-nowrap text-sm font-medium text-white/80 sm:text-base">
+                      {item.name}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </div> {/* end max-w-6xl */}
+      </div>
 
       <style>{`
         @keyframes software-marquee {
-          from {
-            transform: translate3d(0, 0, 0);
-          }
-          to {
-            transform: translate3d(calc(-50% - 0.375rem), 0, 0);
-          }
+          from { transform: translate3d(0, 0, 0); }
+          to   { transform: translate3d(calc(-50% - 0.375rem), 0, 0); }
         }
-
         @media (min-width: 640px) {
           @keyframes software-marquee {
-            from {
-              transform: translate3d(0, 0, 0);
-            }
-            to {
-              transform: translate3d(calc(-50% - 0.5rem), 0, 0);
-            }
+            from { transform: translate3d(0, 0, 0); }
+            to   { transform: translate3d(calc(-50% - 0.5rem), 0, 0); }
           }
         }
       `}</style>
-    </Section>
+    </section>
   );
 }
