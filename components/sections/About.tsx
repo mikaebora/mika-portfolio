@@ -12,16 +12,22 @@ const highlights = [
 
 const software = [
   {
+    name: "CapCut",
+    mark: "Cc",
+    icon: "/icons/capcut.svg",
+    className: "border-white/25 bg-white text-black",
+  },
+  {
     name: "Adobe Premiere Pro",
     mark: "Pr",
     icon: "/icons/premiere.svg",
     className: "border-[#9999ff]/35 bg-[#00005b] text-[#9999ff]",
   },
   {
-    name: "CapCut",
-    mark: "Cc",
-    icon: "/icons/capcut.svg",
-    className: "border-white/25 bg-white text-black",
+    name: "DaVinci Resolve",
+    mark: "Dr",
+    icon: "/icons/davinci.svg",
+    className: "border-[#55d7ff]/35 bg-[#081018] text-[#55d7ff]",
   },
   {
     name: "Photoshop",
@@ -34,12 +40,6 @@ const software = [
     mark: "Fg",
     icon: "/icons/figma.svg",
     className: "border-[#f24e1e]/35 bg-[#1b1b1f] text-[#ff7262]",
-  },
-  {
-    name: "DaVinci Resolve",
-    mark: "Dr",
-    icon: "/icons/davinci.svg",
-    className: "border-[#55d7ff]/35 bg-[#081018] text-[#55d7ff]",
   },
 ];
 
@@ -70,7 +70,7 @@ export default function About() {
                 transition={{ type: "spring", stiffness: 260, damping: 22 }}
               >
                 <Image
-                  src="/profile.jfif"
+                  src="/profile.jpg"
                   alt="Mika Ebora"
                   width={200}
                   height={200}
