@@ -15,7 +15,7 @@ export default function Tools() {
         description="Industry-standard tools for editing, motion design, and creative direction."
       />
 
-      <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-5 lg:gap-8">
+      <div className="grid gap-6 sm:grid-cols-3 lg:grid-cols-6 lg:gap-8">
         {tools.map((tool, index) => (
           <motion.div
             key={tool.id}

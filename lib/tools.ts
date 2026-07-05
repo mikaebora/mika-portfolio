@@ -27,6 +27,12 @@ export const tools: Tool[] = [
   },
   {
     id: "5",
+    name: "Canva",
+    description: "Quick graphic design, social media assets, and branded templates.",
+    logo: "🖌️",
+  },
+  {
+    id: "6",
     name: "Figma",
     description: "Layout planning and visual direction for content.",
     logo: "📐",

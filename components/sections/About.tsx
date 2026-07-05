@@ -36,6 +36,12 @@ const software = [
     className: "border-[#31a8ff]/35 bg-[#001e36] text-[#31a8ff]",
   },
   {
+    name: "Canva",
+    mark: "Cv",
+    icon: "/icons/canva.svg",
+    className: "border-[#7d2ae8]/35 bg-[#1a0b30] text-[#a259ff]",
+  },
+  {
     name: "Figma",
     mark: "Fg",
     icon: "/icons/figma.svg",
