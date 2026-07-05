@@ -25,7 +25,7 @@ export default function FeaturedWorks() {
       <SectionHeading
         label="Featured Works"
         title="Selected projects"
-        description="A showcase of recent edits spanning short-form social content, motion graphics, and brand storytelling."
+        description="A showcase of social content edits across different styles."
       />
 
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto justify-center">

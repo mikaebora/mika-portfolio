@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { Project } from "@/lib/types";
@@ -14,6 +14,9 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
   const isReversed = index % 2 === 1;
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+  const [vimeoThumbnail, setVimeoThumbnail] = useState<string | null>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -27,8 +30,51 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
     return (match && match[2].length === 11) ? match[2] : null;
   };
 
+  const getVimeoId = (url?: string) => {
+    if (!url) return null;
+    const regExp = /^.*(vimeo\.com\/)(video\/)?([0-9]+).*/;
+    const match = url.match(regExp);
+    return match ? match[3] : null;
+  };
+
+  const getGdriveId = (url?: string) => {
+    if (!url) return null;
+    // Matches: drive.google.com/file/d/ID/... or docs.google.com/uc?...&id=ID
+    const fileMatch = url.match(/drive\.google\.com\/file\/d\/([^/&?]+)/);
+    if (fileMatch) return fileMatch[1];
+    const ucMatch = url.match(/[?&]id=([^&]+)/);
+    if (ucMatch && url.includes('google.com')) return ucMatch[1];
+    return null;
+  };
+
   const youtubeId = getYoutubeId(project.video);
+  const vimeoId = getVimeoId(project.video);
+  const gdriveId = getGdriveId(project.video);
   const hasVideo = !!project.video;
+
+  // Control video play/pause on hover for local videos
+  useEffect(() => {
+    if (videoRef.current) {
+      if (isHovered) {
+        videoRef.current.play().catch((err) => console.log("Play failed:", err));
+      } else {
+        videoRef.current.pause();
+        videoRef.current.currentTime = 0;
+      }
+    }
+  }, [isHovered]);
+
+  // Fetch Vimeo thumbnail dynamically if needed
+  useEffect(() => {
+    if (vimeoId) {
+      fetch(`https://vimeo.com/api/oembed.json?url=https://vimeo.com/${vimeoId}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setVimeoThumbnail(data.thumbnail_url);
+        })
+        .catch((err) => console.log("Failed to fetch Vimeo thumbnail:", err));
+    }
+  }, [vimeoId]);
 
   return (
     <>
@@ -39,6 +85,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-50px" }}
         whileHover={project.video ? { scale: 1.04 } : { scale: 1.01 }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
         onClick={() => project.video && setIsPlayerOpen(true)}
         transition={{
           scale: { type: "spring", stiffness: 220, damping: 24 },
@@ -47,22 +95,90 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
       >
         {hasVideo ? (
           <div className="relative aspect-[9/16] overflow-hidden rounded-2xl bg-black">
-            {youtubeId ? (
-              <iframe
-                src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&modestbranding=1&rel=0&playsinline=1&showinfo=0&iv_load_policy=3`}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                className="absolute inset-0 h-full w-full border-0 pointer-events-none transition-all duration-500 group-hover:blur-[4px] group-hover:scale-105"
-              />
+            {isHovered ? (
+              youtubeId ? (
+                <iframe
+                  src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=1&loop=1&playlist=${youtubeId}&controls=0&modestbranding=1&rel=0&playsinline=1&showinfo=0&iv_load_policy=3`}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  className="absolute inset-0 h-full w-full border-0 pointer-events-none transition-all duration-500 group-hover:scale-105"
+                />
+              ) : vimeoId ? (
+                <iframe
+                  src={`https://player.vimeo.com/video/${vimeoId}?controls=0&autoplay=1&muted=1&loop=1&autopause=0&playsinline=1`}
+                  allow="autoplay; fullscreen"
+                  className="absolute inset-0 h-full w-full border-0 pointer-events-none scale-[1.35] transition-all duration-500 group-hover:scale-[1.4]"
+                />
+              ) : gdriveId ? (
+                <iframe
+                  src={`https://drive.google.com/file/d/${gdriveId}/preview`}
+                  allow="autoplay"
+                  className="absolute inset-0 h-full w-full border-0 pointer-events-none scale-[1.35] transition-all duration-500 group-hover:scale-[1.4]"
+                />
+              ) : (
+                <video
+                  ref={videoRef}
+                  src={project.video}
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+              )
             ) : (
-              <video
-                src={project.video}
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:blur-[4px] group-hover:scale-105"
-              />
+              // When not hovered
+              project.thumbnail ? (
+                <img
+                  src={project.thumbnail}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : youtubeId ? (
+                // Show YouTube Thumbnail image — maxres with SD fallback
+                <img
+                  src={`https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                  loading="lazy"
+                  onError={(e) => {
+                    (e.target as HTMLImageElement).src = `https://img.youtube.com/vi/${youtubeId}/sddefault.jpg`;
+                  }}
+                />
+              ) : vimeoId ? (
+                // Show Vimeo Thumbnail image
+                vimeoThumbnail ? (
+                  <img
+                    src={vimeoThumbnail}
+                    alt={project.title}
+                    className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient}`} />
+                )
+              ) : gdriveId ? (
+                // Google Drive thumbnail via Drive's thumbnail API
+                <img
+                  src={`https://drive.google.com/thumbnail?id=${gdriveId}&sz=w400`}
+                  alt={project.title}
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                  loading="lazy"
+                />
+              ) : (
+                // For direct video files (like Dropbox), render the video tag paused.
+                <video
+                  ref={videoRef}
+                  src={project.video}
+                  muted
+                  playsInline
+                  preload="metadata"
+                  className="absolute inset-0 h-full w-full object-cover transition-all duration-500 group-hover:scale-105"
+                />
+              )
             )}
+
+            {/* Centered play icon on hover */}
             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
               <div className="relative flex h-16 w-16 items-center justify-center rounded-full border border-cyan/40 bg-black/40 shadow-[0_0_30px_rgba(34,211,238,0.25)] backdrop-blur-md scale-90 group-hover:scale-100 transition-transform duration-300">
                 <svg
@@ -149,6 +265,20 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
               <iframe
                 src={`https://www.youtube.com/embed/${youtubeId}?autoplay=1&mute=0&rel=0`}
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full border-0 rounded-2xl bg-black"
+              />
+            ) : vimeoId ? (
+              <iframe
+                src={`https://player.vimeo.com/video/${vimeoId}?autoplay=1&muted=0`}
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowFullScreen
+                className="h-full w-full border-0 rounded-2xl bg-black"
+              />
+            ) : gdriveId ? (
+              <iframe
+                src={`https://drive.google.com/file/d/${gdriveId}/preview`}
+                allow="autoplay; fullscreen"
                 allowFullScreen
                 className="h-full w-full border-0 rounded-2xl bg-black"
               />

@@ -12,6 +12,7 @@ export interface Project {
   tools: string[];
   href: string;
   video?: string;
+  thumbnail?: string;
 }
 
 export interface Service {
