@@ -99,7 +99,7 @@ export const projects: Project[] = [
     gradient: "from-indigo-600/40 via-slate-900/30 to-background",
     tools: ["Figma", "Photoshop", "CapCut"],
     href: "#contact",
-    video: "https://drive.google.com/file/d/1QlfkLGwuV14jkmSbEcYQum74gAod968a/view"
+    video: "https://drive.google.com/file/d/1QlfkLGwuV14jkmSbEcYQum74gAod968a/view?usp=sharing"
   },
   {
     id: "10",
@@ -121,7 +121,7 @@ export const projects: Project[] = [
     gradient: "from-indigo-600/40 via-slate-900/30 to-background",
     tools: ["Figma", "Photoshop", "CapCut"],
     href: "#contact",
-    video: "https://drive.google.com/file/d/1HVJDUGWXBKd84wnhgMPZC7PRh2k0eiT9/view"
+    video: "https://drive.google.com/file/d/1HVJDUGWXBKd84wnhgMPZC7PRh2k0eiT9/view?usp=sharing"
   },
 
 ];
