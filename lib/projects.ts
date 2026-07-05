@@ -123,5 +123,16 @@ export const projects: Project[] = [
     href: "#contact",
     video: "https://drive.google.com/file/d/1HVJDUGWXBKd84wnhgMPZC7PRh2k0eiT9/view?usp=sharing"
   },
+  {
+    id: "12",
+    title: "Vlog",
+    description:
+      "Multi-platform content package with unified visual identity across formats.",
+    category: "Interview",
+    gradient: "from-indigo-600/40 via-slate-900/30 to-background",
+    tools: ["Figma", "Photoshop", "CapCut"],
+    href: "#contact",
+    video: "https://youtube.com/shorts/OGcPnN20c3Y?feature=share"
+  },
 
 ];
