@@ -190,8 +190,8 @@ export default function ProjectCard({ project, index }: ProjectCardProps) {
                 </svg>
               </div>
             </div>
-            <div className="absolute left-5 top-5 z-10">
-              <span className="rounded-full border border-white/10 bg-black/45 px-3 py-1 text-xs font-medium text-white/80 backdrop-blur-xl">
+            <div className="absolute left-4 top-4 z-10">
+              <span className="rounded-full border border-cyan/30 bg-black/80 px-3 py-1 text-xs font-semibold text-white backdrop-blur-md shadow-[0_0_12px_rgba(34,211,238,0.2)]">
                 {project.category}
               </span>
             </div>
