@@ -88,7 +88,7 @@ export const projects: Project[] = [
     gradient: "from-indigo-600/40 via-slate-900/30 to-background",
     tools: ["Figma", "Photoshop", "CapCut"],
     href: "#contact",
-    video: "https://dl.dropboxusercontent.com/scl/fi/enr9z5l7l455h3m6885uq/ABID-CHICKAROS.mp4?rlkey=8ukqkdv1swnqcspdaajirx0d9&st=oy9drrny"
+    video: "https://drive.google.com/file/d/12emWEuzldIEtfhPoAntLbYrNHdI7RJRg/view?usp=sharing"
   },
   {
     id: "9",
