@@ -33,5 +33,5 @@ export interface ContactLink {
   label: string;
   value: string;
   href: string;
-  icon: "email" | "facebook" | "linkedin";
+  icon: "email" | "whatsapp";
 }

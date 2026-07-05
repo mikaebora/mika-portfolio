@@ -30,7 +30,7 @@ export default function SectionHeading({
         viewport={{ once: true, margin: "-80px" }}
         variants={textReveal}
       >
-        <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl lg:text-6xl">
+        <h2 className="text-2xl font-bold tracking-tight text-white md:text-4xl lg:text-5xl">
           {title}
         </h2>
       </motion.div>
