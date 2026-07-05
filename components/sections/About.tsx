@@ -7,6 +7,7 @@ import { fadeInUp } from "@/lib/animations";
 const highlights = [
   { label: "Education", value: "Computer Science · Batangas State University" },
   { label: "Role", value: "Video Editor for Brands & Creators" },
+  { label: "Why choose me?", value: "2+ yrs of experience · Quick Turnarounds · Professional Quality" }
 
 ];
 
