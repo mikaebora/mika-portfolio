@@ -134,5 +134,16 @@ export const projects: Project[] = [
     href: "#contact",
     video: "https://youtube.com/shorts/OGcPnN20c3Y?feature=share"
   },
+  {
+    id: "13",
+    title: "Vlog",
+    description:
+      "Multi-platform content package with unified visual identity across formats.",
+    category: "Interview",
+    gradient: "from-indigo-600/40 via-slate-900/30 to-background",
+    tools: ["Figma", "Photoshop", "CapCut"],
+    href: "#contact",
+    video: "https://youtube.com/shorts/wne3p72RipU?feature=share"
+  },
 
 ];
